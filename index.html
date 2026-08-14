@@ -1,0 +1,101 @@
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lista</title>
+        <script>
+
+            var dogdodoi = {
+                veterinarios: [],
+                pacientes: [],
+                medicamentos: [],
+                paciente: [],
+                endereco: {
+                    logradouro: 'Rua dos cachorros',
+                    numero: 10,
+                    bairro: 'Vira-lata',
+                    cidade: 'Pinchers',
+                    estado: 'SP'
+                    
+                },
+                contatos: [
+                    {
+                        tipo: 'Telefone',
+                        valor: '18 99999-7602'
+                    },
+                    {
+                        tipo: 'Whatsapp',
+                        valor: '18 99999-760'
+                    },
+                    {
+                        tipo: 'Instagram',
+                        valor: 'https://instagram.com/dogdodoi'
+                    }
+                    
+                ],
+                cadastroVeterinario(){
+                    var nome = prompt('Nome:')
+                    var especialidade = prompt('Especialidade: ')
+
+                    this.veterinario.push({
+                    nome: nome,
+                    especialidade: especialidade
+                    })
+
+                },
+                cadastrarPaciente(){
+                    var nome_t = prompt('Nome:')
+                    var idade = prompt('Idade paciente:')
+                    var animal = prompt('Nome tutor:')
+                    var telefone = prompt('Telefone:')
+
+                    this.paciente.push({
+                    nome_t: nome,
+                    idade: idade,
+                    animal: animal,
+                    telefone: telefone
+                    })
+                    
+
+                },
+                listarVeterinarios(){
+                    for(var funcionarios of veterinarios){
+                        alert(funcionarios.nome)
+                        alert(funcionarios.especialidade)
+                    }
+                },
+                listarPacientes(){
+                    for(var tutores of paciente){
+                        alert(tutores.nome)
+                        alert(tutores.idade)
+                        alert(tutores.animal)
+                        alert(tutores.telefone)
+                    }
+                }
+            }
+
+            dogdodoi.cadastroVeterinario()
+            dogdodoi.cadastrarPaciente()
+            dogdodoi.listarVeterinarios()
+            dogdodoi.listarPacientes()
+
+
+
+
+
+
+
+
+
+
+
+
+           
+
+
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

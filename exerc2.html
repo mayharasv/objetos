@@ -1,0 +1,96 @@
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lista</title>
+        <script>
+        // Crie um objeto que armazene uma lista de temperaturas registradas 
+        // durante a semana.
+
+        // Adicione métodos para:
+
+        // Registrar uma nova temperatura;
+        // Mostrar todas as temperaturas;
+        // Calcular a maior e a menor temperatura;
+        // Calcular a média das temperaturas;
+        // Contar quantos registros ficaram acima da média.
+            
+            var temperaturas = {
+                
+                lista: [],
+                
+                registro: function(){
+                    var temperatura = Number(prompt('Temperatura: '))
+
+                    if (teperatura >= -50 && temperatura <= 60){
+                        this.lista.push(temperatura)
+                    }else{
+                        alert('Temperatura invalida')
+                    }
+                    
+                }, 
+                todas_temperaturas: function(){
+                    alert(this.lista)
+                },
+
+                maior: function(){
+                    var maior = this.lista[0]
+                    for(var temperatura of this.lista){
+                        if(temperatura > maior){
+                            maior = temperatura
+                        }
+                    }
+                    alert('maior' + maior)
+                },
+
+                menor: function(){
+                    var menor = this.lista[0]
+                    for (var temperatura of this.lista){
+                        if (temperatura < menor ){
+                            menor = temperatura
+                        }
+                    }
+                    alert('menor' + menor)
+                },
+
+                media: function(){
+                    var soma = 0
+                    for (var temperatura of this.lista){
+                        soma = soma + temperatura
+                    }
+                    return soma / this.lista.length
+                },
+                
+                acimaMedia: function(){
+                    var media = this.lista
+                    var contador = 0
+                    for (var temperatura of this.lista){
+                        if (temperatura > media){
+                            contador = contador + 1
+                        }
+                    }
+                    alert('acima' + acimaMedia)
+                }
+
+
+                
+            }
+
+            var qnt = Number(prompt('Temperatura:'))
+            var contador = 0
+            for(contador < qnt){
+                temperatura.adicionar()
+                contador = contador +1
+            }
+            temperatura.adicionar()
+            temperatura.adicionar()
+            
+            
+            // alert(temperatura.registro)
+
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

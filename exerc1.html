@@ -1,0 +1,109 @@
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lista</title>
+        <script>
+
+
+        // Crie um objeto que armazene uma lista de temperaturas registradas 
+        // durante a semana.
+
+        // Adicione métodos para:
+
+        // Registrar uma nova temperatura;
+        // Mostrar todas as temperaturas;
+        // Calcular a maior e a menor temperatura;
+        // Calcular a média das temperaturas;
+        // Contar quantos registros ficaram acima da média.
+
+            // var temperatura = {
+            //     lista: [],
+
+            //     registro(){
+            //         if (teperatura >= -50 && temperatura <= 60){
+            //             temperatura.lista.push(temperatura)
+            //         }else{
+            //             alert('Temperatura invalida')
+            //         }
+
+            //     },
+                
+            // }
+
+
+
+
+
+
+            var temperatura = {
+                lista: [],
+
+                registro: function(temperatura){
+                    if (teperatura >= -50 && temperatura <= 60){
+                        temperatura.lista.push(temperatura)
+                    }else{
+                        alert('Temperatura invalida')
+                    }
+
+                },
+
+                mostrar: function(){
+                    for (var contador = 0; contador < temperaturas.lista.length;contador = contador + 1){
+                        alert(temperatura.lista[contador])
+                    }
+                   
+                },
+                maior: function(){
+                    var maior = temperaturas.lista[0]
+                    for(var contador = 0; contador < temperatura.lista.length; contador = contdor + 1){
+                        if(temperatura.lista[contador] > maior){
+
+                        }
+                    }
+                    alert('Maior' + maior)
+                },
+
+                menor: function(){
+                    var menor = temperaturas.lista[0]
+                    for (var contador = 0; contador < temperaturas.lista.length; contador = contador + 1){
+                        menor = temperaturas.lista[contador]
+                    }
+                    
+                    alert('Menor' + menor)
+                },
+                media: function(){
+                    var soma = 0
+                    for (var contador = 0; contador < temperaturas.lista.length; contador =contador + 1){
+                        soma = soma + temperaturas.lista[contador]
+                    }
+                    var media = soma / temperaturas.lista.length
+                    alert('Media: ' + media)
+                },
+                acimaMedia: function(){
+                    var soma = 0
+                    for (var contador = 0; contador < temperaturas.lista.length; contador = contador + 1){
+                        soma = soma + temperaturas.lista[contador]
+                    }
+
+                    var media = soma / temperaturas.lista.length
+                    var qnt = 0
+
+                    for (var contador = 0; contador < temperaturas.lista.length; contador = contador + 1){
+                        if (temperaturas.lista[contador] > media)
+                            qnt = qnt + 1
+                    }
+                    alert('Acima da media', qnt)
+                }
+
+                
+                
+            }
+
+            temperatura.acimaMedia
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>
