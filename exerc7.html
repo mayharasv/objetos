@@ -4,7 +4,86 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Objeto</title>
         <script>
-
+            var urna = {
+            
+                notas: [],
+            
+                avaliar(nota) {
+                    if (nota >= 1 && nota <= 5) {
+                        this.notas.push(nota)
+                    }
+                },
+            
+                contar() {
+                    for (var nota = 1; nota <= 5; nota++) {
+            
+                        var quantidade = 0
+            
+                        for (var valor of this.notas) {
+                            if (valor == nota) {
+                                quantidade++
+                            }
+                        }
+            
+                        console.log(nota + ': ' + quantidade)
+                    }
+                },
+            
+                media() {
+                    var soma = 0
+            
+                    for (var nota of this.notas) {
+                        soma += nota
+                    }
+            
+                    console.log(soma / this.notas.length)
+                },
+            
+                positivas() {
+                    var quantidade = 0
+            
+                    for (var nota of this.notas) {
+                        if (nota >= 4) {
+                            quantidade++
+                        }
+                    }
+            
+                    console.log(quantidade / this.notas.length * 100 + '%')
+                },
+            
+                maisEscolhida() {
+                    var maior = 0
+                    var notaMais = 0
+            
+                    for (var nota = 1; nota <= 5; nota++) {
+            
+                        var quantidade = 0
+            
+                        for (var valor of this.notas) {
+                            if (valor == nota) {
+                                quantidade++
+                            }
+                        }
+            
+                        if (quantidade > maior) {
+                            maior = quantidade
+                            notaMais = nota
+                        }
+                    }
+            
+                    console.log(notaMais)
+                }
+            }
+            
+            urna.avaliar(5)
+            urna.avaliar(4)
+            urna.avaliar(5)
+            urna.avaliar(3)
+            
+            urna.contar()
+            urna.media()
+            urna.positivas()
+            urna.maisEscolhida()
 
         </script>
     </head>
