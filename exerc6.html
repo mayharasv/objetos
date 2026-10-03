@@ -4,7 +4,66 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Objeto</title>
         <script>
-
+            var estacionamento = {
+            
+                veiculos: [],
+                vagas: 3,
+            
+                entrar(placa, modelo, horario) {
+            
+                    if (this.veiculos.length >= this.vagas) {
+                        alert('Estacionamento lotado')
+                        return
+                    }
+            
+                    for (var veiculo of this.veiculos) {
+                        if (veiculo.placa == placa) {
+                            alert('Placa já cadastrada')
+                            return
+                        }
+                    }
+            
+                    this.veiculos.push({
+                        placa: placa,
+                        modelo: modelo,
+                        entrada: horario
+                    })
+                },
+            
+                sair(placa, horas) {
+            
+                    for (var i = 0; i < this.veiculos.length; i++) {
+                        if (this.veiculos[i].placa == placa) {
+            
+                            var valor = horas * 8
+            
+                            console.log('Valor: R$ ' + valor)
+            
+                            this.veiculos.splice(i, 1)
+                        }
+                    }
+                },
+            
+                verificar(placa) {
+                    for (var veiculo of this.veiculos) {
+                        if (veiculo.placa == placa) {
+                            console.log('Está estacionado')
+                        }
+                    }
+                },
+            
+                vagasLivres() {
+                    console.log(this.vagas - this.veiculos.length)
+                }
+            }
+            
+            estacionamento.entrar('ABC1234', 'Gol', '08:00')
+            estacionamento.entrar('DEF5678', 'Civic', '09:00')
+            
+            estacionamento.verificar('ABC1234')
+            estacionamento.vagasLivres()
+            
+            estacionamento.sair('ABC1234', 2)
 
         </script>
     </head>
