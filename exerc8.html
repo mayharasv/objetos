@@ -5,7 +5,83 @@
         <title>Objeto</title>
         <script>
 
-
+            var biblioteca = {
+            
+                equipamentos: [],
+                emprestimos: [],
+            
+                cadastrar(codigo, nome) {
+                    this.equipamentos.push({
+                        codigo: codigo,
+                        nome: nome,
+                        situacao: 'Disponível'
+                    })
+                },
+            
+                emprestar(codigo, pessoa, data) {
+            
+                    for (var equipamento of this.equipamentos) {
+            
+                        if (equipamento.codigo == codigo) {
+            
+                            if (equipamento.situacao == 'Emprestado') {
+                                alert('Já está emprestado')
+                                return
+                            }
+            
+                            equipamento.situacao = 'Emprestado'
+            
+                            this.emprestimos.push({
+                                codigo: codigo,
+                                pessoa: pessoa,
+                                data: data,
+                                situacao: 'Não devolvido'
+                            })
+                        }
+                    }
+                },
+            
+                devolver(codigo) {
+            
+                    for (var equipamento of this.equipamentos) {
+                        if (equipamento.codigo == codigo) {
+                            equipamento.situacao = 'Disponível'
+                        }
+                    }
+            
+                    for (var emprestimo of this.emprestimos) {
+                        if (emprestimo.codigo == codigo) {
+                            emprestimo.situacao = 'Devolvido'
+                        }
+                    }
+                },
+            
+                disponiveis() {
+                    for (var equipamento of this.equipamentos) {
+                        if (equipamento.situacao == 'Disponível') {
+                            console.log(equipamento)
+                        }
+                    }
+                },
+            
+                emprestados() {
+                    for (var emprestimo of this.emprestimos) {
+                        if (emprestimo.situacao == 'Não devolvido') {
+                            console.log(emprestimo)
+                        }
+                    }
+                }
+            }
+            
+            biblioteca.cadastrar(1, 'Notebook')
+            biblioteca.cadastrar(2, 'Projetor')
+            
+            biblioteca.emprestar(1, 'Lucas', '03/10/2026')
+            
+            biblioteca.disponiveis()
+            biblioteca.emprestados()
+            
+            biblioteca.devolver(1)
         </script>
     </head>
     <body>
