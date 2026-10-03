@@ -4,7 +4,68 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Objeto</title>
         <script>
-
+            var turma = {
+            
+                nome: '2º DS',
+                totalAulas: 20,
+                estudantes: [],
+            
+                cadastrar(nome) {
+                    this.estudantes.push({
+                        nome: nome,
+                        presencas: 0,
+                        faltas: 0
+                    })
+                },
+            
+                presenca(nome) {
+                    for (var aluno of this.estudantes) {
+                        if (aluno.nome == nome) {
+                            if (aluno.presencas + aluno.faltas < this.totalAulas) {
+                                aluno.presencas++
+                            }
+                        }
+                    }
+                },
+            
+                falta(nome) {
+                    for (var aluno of this.estudantes) {
+                        if (aluno.nome == nome) {
+                            if (aluno.presencas + aluno.faltas < this.totalAulas) {
+                                aluno.faltas++
+                            }
+                        }
+                    }
+                },
+            
+                frequencia(nome) {
+                    for (var aluno of this.estudantes) {
+                        if (aluno.nome == nome) {
+                            var porcentagem = aluno.presencas / this.totalAulas * 100
+                            console.log(porcentagem + '%')
+                        }
+                    }
+                },
+            
+                abaixoDe75() {
+                    for (var aluno of this.estudantes) {
+                        var porcentagem = aluno.presencas / this.totalAulas * 100
+            
+                        if (porcentagem < 75) {
+                            console.log(aluno.nome)
+                        }
+                    }
+                }
+            }
+            
+            turma.cadastrar('Lucas')
+            turma.cadastrar('Gabriel')
+            
+            turma.presenca('Lucas')
+            turma.falta('Gabriel')
+            
+            turma.frequencia('Lucas')
+            turma.abaixoDe75()
 
         </script>
     </head>
