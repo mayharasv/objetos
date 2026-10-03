@@ -5,7 +5,103 @@
         <title>Objeto</title>
         <script>
 
-
+            var campeonato = {
+            
+                equipes: [],
+            
+                cadastrar(nome) {
+                    this.equipes.push({
+                        nome: nome,
+                        pontos: 0,
+                        vitorias: 0,
+                        empates: 0,
+                        derrotas: 0,
+                        golsMarcados: 0,
+                        golsSofridos: 0
+                    })
+                },
+            
+                partida(nome1, nome2, gols1, gols2) {
+            
+                    if (nome1 == nome2) {
+                        alert('Uma equipe não pode jogar contra ela mesma')
+                        return
+                    }
+            
+                    var time1
+                    var time2
+            
+                    for (var equipe of this.equipes) {
+                        if (equipe.nome == nome1) {
+                            time1 = equipe
+                        }
+            
+                        if (equipe.nome == nome2) {
+                            time2 = equipe
+                        }
+                    }
+            
+                    time1.golsMarcados += gols1
+                    time1.golsSofridos += gols2
+            
+                    time2.golsMarcados += gols2
+                    time2.golsSofridos += gols1
+            
+                    if (gols1 > gols2) {
+                        time1.pontos += 3
+                        time1.vitorias++
+                        time2.derrotas++
+                    }
+                    else if (gols2 > gols1) {
+                        time2.pontos += 3
+                        time2.vitorias++
+                        time1.derrotas++
+                    }
+                    else {
+                        time1.pontos++
+                        time2.pontos++
+                        time1.empates++
+                        time2.empates++
+                    }
+                },
+            
+                saldo(equipe) {
+                    return equipe.golsMarcados - equipe.golsSofridos
+                },
+            
+                classificacao() {
+                    for (var equipe of this.equipes) {
+                        console.log(
+                            equipe.nome +
+                            ' - Pontos: ' + equipe.pontos +
+                            ' - Saldo: ' + this.saldo(equipe)
+                        )
+                    }
+                },
+            
+                melhorAtaque() {
+            
+                    var melhor = this.equipes[0]
+            
+                    for (var equipe of this.equipes) {
+                        if (equipe.golsMarcados > melhor.golsMarcados) {
+                            melhor = equipe
+                        }
+                    }
+            
+                    console.log('Melhor ataque: ' + melhor.nome)
+                }
+            }
+            
+            campeonato.cadastrar('Santos')
+            campeonato.cadastrar('Corinthians')
+            campeonato.cadastrar('Palmeiras')
+            
+            campeonato.partida('Santos', 'Corinthians', 2, 1)
+            campeonato.partida('Palmeiras', 'Santos', 1, 1)
+            
+            campeonato.classificacao()
+            campeonato.melhorAtaque()
         </script>
     </head>
     <body>
