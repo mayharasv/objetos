@@ -4,7 +4,74 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Objeto</title>
         <script>
-
+            var agenda = {
+            
+                contatos: [],
+            
+                cadastrar(nome, telefone, email, favorito) {
+                    for (var contato of this.contatos) {
+                        if (contato.telefone == telefone) {
+                            alert('Telefone já cadastrado')
+                            return
+                        }
+                    }
+            
+                    this.contatos.push({
+                        nome: nome,
+                        telefone: telefone,
+                        email: email,
+                        favorito: favorito
+                    })
+                },
+            
+                buscar(nome) {
+                    for (var contato of this.contatos) {
+                        if (contato.nome == nome) {
+                            console.log(contato)
+                        }
+                    }
+                },
+            
+                alterarTelefone(nome, telefone) {
+                    for (var contato of this.contatos) {
+                        if (contato.nome == nome) {
+                            contato.telefone = telefone
+                        }
+                    }
+                },
+            
+                marcarFavorito(nome) {
+                    for (var contato of this.contatos) {
+                        if (contato.nome == nome) {
+                            contato.favorito = true
+                        }
+                    }
+                },
+            
+                remover(nome) {
+                    for (var i = 0; i < this.contatos.length; i++) {
+                        if (this.contatos[i].nome == nome) {
+                            this.contatos.splice(i, 1)
+                        }
+                    }
+                },
+            
+                mostrarFavoritos() {
+                    for (var contato of this.contatos) {
+                        if (contato.favorito == true) {
+                            console.log(contato)
+                        }
+                    }
+                }
+            }
+            
+            agenda.cadastrar('Lucas', '1111', 'lucas@email.com', true)
+            agenda.cadastrar('Gabriel', '2222', 'gabriel@email.com', false)
+            
+            agenda.buscar('Lucas')
+            agenda.alterarTelefone('Lucas', '9999')
+            agenda.marcarFavorito('Gabriel')
+            agenda.mostrarFavoritos()
 
         </script>
     </head>
