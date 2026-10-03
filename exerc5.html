@@ -5,7 +5,58 @@
         <title>Objeto</title>
         <script>
 
-
+            var jogo = {
+            
+                numeroSecreto: 0,
+                maxTentativas: 5,
+                tentativas: 0,
+                numeros: [],
+                situacao: 'Jogando',
+            
+                sortear() {
+                    this.numeroSecreto = Math.floor(Math.random() * 100) + 1
+                },
+            
+                tentar(numero) {
+            
+                    if (this.numeros.includes(numero)) {
+                        alert('Número repetido')
+                        return
+                    }
+            
+                    this.numeros.push(numero)
+                    this.tentativas++
+            
+                    if (numero == this.numeroSecreto) {
+                        alert('Você venceu!')
+                        this.situacao = 'Venceu'
+                    }
+                    else if (numero < this.numeroSecreto) {
+                        alert('O número secreto é maior')
+                    }
+                    else {
+                        alert('O número secreto é menor')
+                    }
+            
+                    if (this.tentativas == this.maxTentativas) {
+                        this.situacao = 'Perdeu'
+                        alert('Você perdeu!')
+                    }
+                },
+            
+                reiniciar() {
+                    this.tentativas = 0
+                    this.numeros = []
+                    this.situacao = 'Jogando'
+                    this.sortear()
+                }
+            }
+            
+            jogo.reiniciar()
+            
+            console.log(jogo)
+            
+            jogo.tentar(50)
         </script>
     </head>
     <body>
